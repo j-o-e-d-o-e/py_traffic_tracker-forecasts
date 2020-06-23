@@ -11,4 +11,3 @@ def predict():
         day.probability = round(sum(hour.probability for hour in day.hours.all()) / len(day.hours.all()), 2)
         day.save()
         print(day)
-    return Day.objects.all()
