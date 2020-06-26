@@ -10,7 +10,7 @@ from planes.serializers import ForecastDaySerializer
 @api_view(['GET'])
 def predict_and_planes_list(request):
     """
-    Predicts, saves and lists all forecasts (workaround for dyno-sleep on free-plan)
+    Predicts, saves and lists all current forecasts (workaround for dyno-sleep on free-plan)
     """
     forecasts = service.predict_and_get_forecasts()
     serializer = ForecastDaySerializer(forecasts, many=True)
@@ -21,7 +21,7 @@ def predict_and_planes_list(request):
 @api_view(['GET'])
 def planes_list(request):
     """
-    Lists all forecasts
+    Lists all forecasts (current and older)
     """
     forecasts = service.get_forecasts()
     serializer = ForecastDaySerializer(forecasts, many=True)
